@@ -1,9 +1,7 @@
 from aiogram import Bot, Dispatcher, executor, types
 
-
 bot = Bot('6322621773:AAHPcJkJwLFS_jpzWWhOJPbMtjiW261huMo')
 dp = Dispatcher(bot)
-
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
@@ -14,7 +12,7 @@ async def start(message: types.Message):
 async def info(message: types.Message):
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton('Site', url='https://www.marwin.kz'))
-    markup.add(types.InlineKeyboardButton('Assortment', callback_data='Assortment'))
+    markup.add(types.InlineKeyboardButton('Assortment', callback_data='Assortment - Our assortment includes toys for children.'))
     await message.reply('Здравствуйте посетитель! Рады вас приветствовать вас в нашем магазине. - Hello visitor! We are glad to welcome you to our store.', reply_markup=markup)
 
 
