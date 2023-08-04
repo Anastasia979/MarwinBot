@@ -5,7 +5,7 @@ bot = Bot('6322621773:AAHPcJkJwLFS_jpzWWhOJPbMtjiW261huMo')
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(content_types=['photo'])
+@dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     await message.reply('Здравствуйте посетитель! Рады вас приветствовать вас в нашем магазине. - Hello visitor! We are glad to welcome you to our store.')
 
@@ -14,14 +14,13 @@ async def start(message: types.Message):
 async def info(message: types.Message):
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton('Site', url='https://www.marwin.kz'))
-    markup.add(types.InlineKeyboardButton('Assortment', callback_data='В наш ассортимент входят игрушки для детей разных возрастов, и многое другое для наших маленьких и не только покупателей. - Our assortment includes toys for children of different ages, and much more for our little and not only customers'))
+    markup.add(types.InlineKeyboardButton('Assortment', callback_data='Assortment'))
     await message.reply('Здравствуйте посетитель! Рады вас приветствовать вас в нашем магазине. - Hello visitor! We are glad to welcome you to our store.', reply_markup=markup)
 
 
-
-@dp.callback_query_handler(commands=['inline'])
+@dp.callback_query_handler()
 async def callback(call):
-    await call.message.aswer(call.data)
+    await call.message.answer(call.data)
 
 
 @dp.message_handler(commands=['reply'])
